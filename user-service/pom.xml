@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>lk.nibm</groupId>
-	<artifactId>userservice</artifactId>
+	<artifactId>user-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>User Service</name>
 	<description>User Management Service for LMS</description>
