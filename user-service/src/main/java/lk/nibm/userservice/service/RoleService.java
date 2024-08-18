@@ -14,6 +14,16 @@ public class RoleService {
         return roleRepository.findByName(name);
     }
 
+    public Role createOrUpdateRole(String roleName) {
+        Role existingRole = roleRepository.findByName(roleName);
+        if (existingRole == null) {
+            Role newRole = new Role();
+            newRole.setName(roleName);
+            return roleRepository.save(newRole);
+        }
+        return existingRole;
+    }
+
     // Other role-related business methods
 }
 
