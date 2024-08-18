@@ -4,8 +4,6 @@
 *.iws
 *.ipr
 out/
-target/
-*.class
 
 # Maven
 *.log
@@ -16,6 +14,10 @@ pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
 pom.xml.lastUpdated
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
 # Gradle
 .gradle/
@@ -55,29 +57,37 @@ Thumbs.db
 # IDE-specific files
 *.sublime-project
 *.sublime-workspace
-*.vscode/
 *.code-workspace
-
-# Build directories
-build/
-dist/
-
-# JavaScript package manager directories
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# OS-specific files
-.DS_Store
-Thumbs.db
-
-# IntelliJ
-*.iml
-*.iws
-*.ipr
-out/
+.vscode/
 
 # Miscellaneous
 *.tmp
 *.swp
+
+# Build directories
+dist/
+
+# JavaScript package manager directories
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Spring Tool Suite (STS)
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+# Visual Studio Code
+.vscode/
