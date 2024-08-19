@@ -68,19 +68,12 @@ public class UserController {
     @GetMapping("/status")
     public ResponseEntity<String> checkStatus(HttpServletRequest request) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        HttpSession session = request.getSession(false);
-        String sessionId = session != null ? session.getId() : "No session";
-        String authName = authentication != null ? authentication.getName() : "No authentication";
-        String authDetails = authentication != null && authentication.getDetails() != null ?
-                authentication.getDetails().toString() : "No details";
 
         if (authentication != null && authentication.isAuthenticated() && !(authentication instanceof AnonymousAuthenticationToken)) {
-            return ResponseEntity.ok(String.format("User is logged in: %s, Session ID: %s, Auth Details: %s",
-                    authName, sessionId, authDetails));
+            return ResponseEntity.ok("User is logged in: " + authentication.getName());
+        } else {
+            return ResponseEntity.ok("User is not logged in");
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                .body(String.format("User is not logged in. Session ID: %s, Auth Name: %s, Auth Details: %s",
-                        sessionId, authName, authDetails));
     }
 
     @PostMapping("/logout")

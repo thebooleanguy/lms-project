@@ -33,12 +33,11 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/auth/register", "/auth/login").permitAll()
+                        .requestMatchers("/auth/register", "/auth/login", "/auth/status").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-                        .sessionAuthenticationStrategy(sessionAuthenticationStrategy())
                 )
                 .formLogin(form -> form.disable())
                 .logout(logout -> logout
@@ -48,8 +47,7 @@ public class SecurityConfig {
                             response.getWriter().write("Logged out successfully");
                         })
                         .permitAll()
-                )
-                .authenticationProvider(authenticationProvider());
+                );
 
         return http.build();
     }
